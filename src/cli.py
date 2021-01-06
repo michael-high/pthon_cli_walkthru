@@ -11,11 +11,11 @@ inventory app which:
             cond
             ?checked_out?
 """
-# TODO make a menu print out showing options
-#variables
-items=[1,2,3]
+from models.item import Item
+items=[]#used to store items(input from add_item)
+next_id=0
 
-def menu1():
+def menu1(): #first user menu
     print("""
     1. List all Items
     2. Add Item
@@ -24,24 +24,27 @@ def menu1():
     5. Exit
     """)
 
-def list_items():
+def list_items(): #lists all items in items[]
     print('list_items')
     for item in items:
         print(item)
 
-def add_item():
-    print('add_item')
+def add_item(): #creates item using the item class, then adds it to items[]
     global next_id
+    print('add_item')
     name=input('Name: ')
     cond=input('Condition: ')
     item_id=next_id
     next_id+=1
+    
+    tmp=Item(name, cond, item_id)
+    items.append(tmp)
 
 
 def update_existing():
     print('update_existing')
 
-def delete_item(itemId):
+def delete_item():
     print('delete_item')
 
 """note on try/except input validation/error catching
@@ -66,7 +69,15 @@ while(True): #always
         print('Improper Input, please try again')
         continue
 """
+print("""
+******************************************
+*      \/EAH                             *
+*      /   BABY                          *
+*                                        *
+******************************************
 
+
+""")
 while(True): #always
     menu1()
     in1=input(">")
