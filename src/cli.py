@@ -84,6 +84,7 @@ def delete_item():
 
     else:
         print('Item not found')
+        return
     
     print(f"item:\n{items.pop(index_remove)}\nHas been removed")
 
